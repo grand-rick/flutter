@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 class StyledBtn extends StatelessWidget {
   final String numText;
-  void Function()? btnPressed;
+  final void Function()? btnPressed;
 
-  StyledBtn(
-      {super.key, required this.numText, required void Function()? btnPressed});
+  const StyledBtn({super.key, required this.numText, required this.btnPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +12,7 @@ class StyledBtn extends StatelessWidget {
         onPressed: btnPressed,
         child: Text(
           numText,
-          style: const TextStyle(fontSize: 28, color: Colors.white),
+          style: const TextStyle(fontSize: 28, color: Colors.black),
         ));
   }
 }
