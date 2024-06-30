@@ -3,7 +3,7 @@ import 'package:russian_roulette/gradient_container.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: Scaffold(body: GradientContainer()),
     ),
   );

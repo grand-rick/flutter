@@ -13,7 +13,7 @@ class GradientContainer extends StatelessWidget {
           end: Alignment.bottomRight,
         ),
       ),
-      child: Roulette(),
+      child: const Roulette(),
     );
   }
 }

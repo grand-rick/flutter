@@ -47,6 +47,7 @@ class _RouletteState extends State<Roulette> {
             StyledBtn(numText: '2', btnPressed: onBtnPressed),
           ],
         ),
+        const SizedBox(height: 40),
         const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
