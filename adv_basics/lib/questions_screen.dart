@@ -1,4 +1,5 @@
 import 'package:adv_basics/answer_button.dart';
+import 'package:adv_basics/models/quiz_question.dart';
 import 'package:flutter/material.dart';
 import 'package:adv_basics/data/questions.dart';
 
@@ -12,9 +13,17 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
+  int currentQuestionIndex = 0;
+
+  void answerQuestion() {
+    setState(() {
+      currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final currentQuestion = questions[0];
+    QuizQuestion currentQuestion = questions[currentQuestionIndex];
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -32,7 +41,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             ),
             const SizedBox(height: 30),
             ...currentQuestion.getShuffledAnswers().map((answer) {
-              return AnswerButton(answer, () {});
+              return AnswerButton(answer, answerQuestion);
             }),
           ],
         ),
