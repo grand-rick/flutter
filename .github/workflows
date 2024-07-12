@@ -1,0 +1,42 @@
+name: Flutter Code Quality Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.x'
+        channel: 'stable'
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Run Dart Analyzer
+      run: flutter analyze
+
+    - name: Run Dart Format Check
+      run: dart format --set-exit-if-changed .
+
+    - name: Install CPPCheck
+      run: sudo apt-get install -y cppcheck
+
+    - name: Run CPPCheck
+      run: cppcheck --enable=all --error-exitcode=1 .
+
+    - name: Run Clang-Format Check
+      run: |
+        sudo apt-get install -y clang-format
+        find . -name '*.cpp' -o -name '*.h' | xargs clang-format -n -Werror
