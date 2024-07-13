@@ -22,7 +22,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   void answerQuestion(String answer) {
     widget.onSelectAnswer(answer);
     setState(() {
-      currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+      currentQuestionIndex++;
     });
   }
 
@@ -32,9 +32,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
     return SizedBox(
       width: double.infinity,
       child: Container(
-        margin: const EdgeInsets.all(40),
+        margin: const EdgeInsets.symmetric(vertical: 160, horizontal: 40),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
