@@ -15,46 +15,51 @@ class QuestionsSummary extends StatelessWidget {
           children: summaryData.map((data) {
             bool isCorrectAnswer = data['answer'] == data['chosenAnswer'];
             int questionIndex = (data['question_index'] as int) + 1;
-            return Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                QuestionIdentifier(
-                    isCorrectAnswer: isCorrectAnswer,
-                    questionIndex: questionIndex),
-                const SizedBox(
-                  width: 25,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        (data['question']) as String,
-                        style: const TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        (data['chosenAnswer']) as String,
-                        style: TextStyle(
-                          color: isCorrectAnswer
-                              ? Colors.green
-                              : const Color.fromARGB(255, 245, 101, 91),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        (data['answer']) as String,
-                        style: const TextStyle(color: Colors.green),
-                      ),
-                    ],
+            return Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 8,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  QuestionIdentifier(
+                      isCorrectAnswer: isCorrectAnswer,
+                      questionIndex: questionIndex),
+                  const SizedBox(
+                    width: 25,
                   ),
-                )
-              ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          (data['question']) as String,
+                          style: const TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          (data['chosenAnswer']) as String,
+                          style: TextStyle(
+                            color: isCorrectAnswer
+                                ? Colors.green
+                                : const Color.fromARGB(255, 245, 101, 91),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          (data['answer']) as String,
+                          style: const TextStyle(color: Colors.green),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             );
           }).toList(),
         ),
